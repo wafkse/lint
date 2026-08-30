@@ -1,0 +1,66 @@
+error: destructure `self` before accessing stored fields
+  --> $DIR/no_self_field_access.rs:25:15
+   |
+LL |         &self.rsi
+   |               ^^^
+   |
+   = note: `#[deny(no_self_field_access)]` on by default
+
+error: destructure `self` before accessing stored fields
+  --> $DIR/no_self_field_access.rs:29:19
+   |
+LL |         &mut self.rdi
+   |                   ^^^
+
+error: destructure `self` before accessing stored fields
+  --> $DIR/no_self_field_access.rs:33:14
+   |
+LL |         self.rdx
+   |              ^^^
+
+error: destructure `self` before accessing stored fields
+  --> $DIR/no_self_field_access.rs:37:22
+   |
+LL |         &mut (*self).rsi
+   |                      ^^^
+
+error: destructure `self` before accessing stored fields
+  --> $DIR/no_self_field_access.rs:43:15
+   |
+LL |         &this.rsi
+   |               ^^^
+
+error: destructure `self` in the first statement of the method
+  --> $DIR/no_self_field_access.rs:48:9
+   |
+LL |         let Self { rsi, .. } = this;
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: derive stored fields from a first-statement `self` destructure
+  --> $DIR/no_self_field_access.rs:54:9
+   |
+LL | /         match self {
+LL | |             Self { rsi, .. } => rsi,
+LL | |         }
+   | |_________^
+
+error: destructure `self` in the first statement of the method
+  --> $DIR/no_self_field_access.rs:61:9
+   |
+LL |         let Self { rsi, .. } = self;
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: destructure `self` in the first statement of the method
+  --> $DIR/no_self_field_access.rs:68:13
+   |
+LL |             let Self { rsi, .. } = self;
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: destructure `self` in the first statement of the method
+  --> $DIR/no_self_field_access.rs:76:9
+   |
+LL |         let Self { rsi, .. } = self;
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: aborting due to 10 previous errors
+

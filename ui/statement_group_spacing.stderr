@@ -1,0 +1,58 @@
+error: separate this statement group from the preceding group with a blank line
+  --> $DIR/statement_group_spacing.rs:8:5
+   |
+LL |     effect();
+   |     ^
+   |
+   = note: `#[deny(statement_group_spacing)]` on by default
+
+error: separate this statement group from the preceding group with a blank line
+  --> $DIR/statement_group_spacing.rs:15:5
+   |
+LL |     let first = 1_u8;
+   |     ^
+
+error: separate this statement group from the preceding group with a blank line
+  --> $DIR/statement_group_spacing.rs:21:5
+   |
+LL |     let (left, right) = (2_u8, 3_u8);
+   |     ^
+
+error: separate this statement group from the preceding group with a blank line
+  --> $DIR/statement_group_spacing.rs:22:5
+   |
+LL |     let last = 4_u8;
+   |     ^
+
+error: separate this statement group from the preceding group with a blank line
+  --> $DIR/statement_group_spacing.rs:29:5
+   |
+LL |     let [third, fourth] = [3_u8, 4_u8];
+   |     ^
+
+error: separate this statement group from the preceding group with a blank line
+  --> $DIR/statement_group_spacing.rs:36:5
+   |
+LL |     let Some(value) = input else {
+   |     ^
+
+error: separate this statement group from the preceding group with a blank line
+  --> $DIR/statement_group_spacing.rs:39:5
+   |
+LL |     let output = value;
+   |     ^
+
+error: separate this statement group from the preceding group with a blank line
+  --> $DIR/statement_group_spacing.rs:47:5
+   |
+LL |     effect();
+   |     ^
+
+error: separate this statement group from the preceding group with a blank line
+  --> $DIR/statement_group_spacing.rs:75:5
+   |
+LL |     value
+   |     ^
+
+error: aborting due to 9 previous errors
+

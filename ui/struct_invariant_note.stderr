@@ -1,0 +1,46 @@
+error: struct with non-public fields req$DIRres one adjacent `NOTE(invariant):` comment
+  --> $DIR/struct_invariant_note.rs:3:8
+   |
+LL | struct Missing {
+   |        ^^^^^^^
+   |
+   = note: `#[deny(struct_invariant_note)]` on by default
+
+error: struct with non-public fields req$DIRres one adjacent `NOTE(invariant):` comment
+  --> $DIR/struct_invariant_note.rs:17:8
+   |
+LL | struct Misplaced {
+   |        ^^^^^^^^^
+
+error: struct with non-public fields req$DIRres exactly one adjacent `NOTE(invariant):` comment
+  --> $DIR/struct_invariant_note.rs:24:8
+   |
+LL | struct Duplicate {
+   |        ^^^^^^^^^
+
+error: `NOTE(invariant):` is only allowed as the single adjacent rationale for a struct with non-public fields
+  --> $DIR/struct_invariant_note.rs:12:4
+   |
+LL | // NOTE(invariant): Public storage does not enforce a representation invariant.
+   |    ^^^^^^^^^^^^^^^^
+
+error: `NOTE(invariant):` is only allowed as the single adjacent rationale for a struct with non-public fields
+  --> $DIR/struct_invariant_note.rs:18:8
+   |
+LL |     // NOTE(invariant): A field comment does not own the structure invariant.
+   |        ^^^^^^^^^^^^^^^^
+
+error: `NOTE(invariant):` is only allowed as the single adjacent rationale for a struct with non-public fields
+  --> $DIR/struct_invariant_note.rs:22:4
+   |
+LL | // NOTE(invariant): First rationale.
+   |    ^^^^^^^^^^^^^^^^
+
+error: `NOTE(invariant):` is only allowed as the single adjacent rationale for a struct with non-public fields
+  --> $DIR/struct_invariant_note.rs:23:4
+   |
+LL | // NOTE(invariant): Second rationale.
+   |    ^^^^^^^^^^^^^^^^
+
+error: aborting due to 7 previous errors
+

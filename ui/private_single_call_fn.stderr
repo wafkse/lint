@@ -1,0 +1,39 @@
+error: this private helper is only used once
+  --> $DIR/private_single_call_fn.rs:3:1
+   |
+LL | fn private_once() {}
+   | ^^^^^^^^^^^^^^^^^^^^
+   |
+note: used here
+  --> $DIR/private_single_call_fn.rs:78:5
+   |
+LL |     private_once();
+   |     ^^^^^^^^^^^^
+   = note: `#[deny(private_single_call_fn)]` on by default
+
+error: this private helper is only used once
+  --> $DIR/private_single_call_fn.rs:14:5
+   |
+LL |     fn method_once(&self) {}
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+note: used here
+  --> $DIR/private_single_call_fn.rs:85:5
+   |
+LL |     helper.method_once();
+   |     ^^^^^^^^^^^^^^^^^^^^
+
+error: this private helper is only used once
+  --> $DIR/private_single_call_fn.rs:16:5
+   |
+LL |     fn associated_once() {}
+   |     ^^^^^^^^^^^^^^^^^^^^^^^
+   |
+note: used here
+  --> $DIR/private_single_call_fn.rs:86:5
+   |
+LL |     Helper::associated_once();
+   |     ^^^^^^^^^^^^^^^^^^^^^^^
+
+error: aborting due to 3 previous errors
+

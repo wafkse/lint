@@ -1,0 +1,16 @@
+error: numeric field access is prohibited
+  --> $DIR/main.rs:13:19
+   |
+LL |     let _ = tuple.0;
+   |                   ^
+   |
+   = note: `#[deny(no_numeric_field_access)]` on by default
+
+error: numeric field access is prohibited
+  --> $DIR/main.rs:16:21
+   |
+LL |     let _ = wrapper.0;
+   |                     ^
+
+error: aborting due to 2 previous errors
+

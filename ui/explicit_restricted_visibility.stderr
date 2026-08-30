@@ -1,0 +1,34 @@
+error: restricted visibility must name an explicit ancestor module
+  --> $DIR/explicit_restricted_visibility.rs:3:1
+   |
+LL | pub(crate) fn crate_shorthand() {}
+   | ^^^^^^^^^^
+   |
+   = note: `#[deny(explicit_restricted_visibility)]` on by default
+
+error: restricted visibility must name an explicit ancestor module
+  --> $DIR/explicit_restricted_visibility.rs:5:1
+   |
+LL | pub(in crate) fn bare_crate_path() {}
+   | ^^^^^^^^^^^^^
+
+error: restricted visibility must name an explicit ancestor module
+  --> $DIR/explicit_restricted_visibility.rs:12:5
+   |
+LL |     pub(in crate) rejected: u8,
+   |     ^^^^^^^^^^^^^
+
+error: restricted visibility must name an explicit ancestor module
+  --> $DIR/explicit_restricted_visibility.rs:20:9
+   |
+LL |         pub(super) fn super_shorthand() {}
+   |         ^^^^^^^^^^
+
+error: restricted visibility must name an explicit ancestor module
+  --> $DIR/explicit_restricted_visibility.rs:22:9
+   |
+LL |         pub(in super) fn bare_super_path() {}
+   |         ^^^^^^^^^^^^^
+
+error: aborting due to 5 previous errors
+
