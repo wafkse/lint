@@ -1,6 +1,7 @@
 //! Enforces blank lines between structurally distinct statement groups.
 
 use clippy_utils::diagnostics::span_lint;
+use clippy_utils::in_automatically_derived;
 use rustc_hir::{Block, PatKind, Stmt, StmtKind};
 use rustc_lint::{LateContext, LateLintPass, LintContext};
 use rustc_span::Span;
@@ -110,6 +111,10 @@ impl StatementGroupSpacing {
 
 impl<'tcx> LateLintPass<'tcx> for StatementGroupSpacing {
     fn check_block(&mut self, context: &LateContext<'tcx>, block: &'tcx Block<'tcx>) {
+        if block.span.from_expansion() || in_automatically_derived(context.tcx, block.hir_id) {
+            return;
+        }
+
         for pair in block.stmts.windows(2) {
             let [preceding, following] = pair else {
                 continue;

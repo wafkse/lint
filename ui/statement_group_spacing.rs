@@ -96,3 +96,16 @@ fn expansion_is_ignored() {
 }
 
 fn main() {}
+
+trait AutomaticallyDerivedFixture {
+    fn generated();
+}
+
+#[automatically_derived]
+impl AutomaticallyDerivedFixture for () {
+    fn generated() {
+        let (left, right) = (1_u8, 2_u8);
+        let sum = left + right;
+        let _ = sum;
+    }
+}
