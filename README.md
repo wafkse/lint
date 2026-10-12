@@ -14,6 +14,10 @@ Rejects unnamed numeric field access such as `tuple.0` and `wrapper.1`. Named fi
 
 Rejects stored field access derived from the method receiver such as `self.rsi`, `(*self).rsi`, and immutable aliases of `self`. Any receiver destructure used to derive stored fields must be the first statement in the method. Method calls on the receiver remain valid.
 
+`self_pattern_rest`
+
+Requires `..` in `let Self(...)` patterns when two or more consecutive plain `_` wildcards occur at the beginning or end. For example, `Self(_, _, value)` becomes `Self(.., value)` and `Self(value, _, _)` becomes `Self(value, ..)`. Explicit reference patterns are included. Single wildcards, interior runs, macro-generated patterns, and patterns already containing `..` are ignored. When both edges qualify, the leading run is reported so only one `..` is introduced.
+
 `private_single_call_fn`
 
 Rejects trivial private free functions and inherent methods that are used only once. Only items with inherited visibility (`fn ...`) are considered; `pub`, `pub(crate)`, `pub(super)`, `pub(self)`, other restricted visibility, and trait methods are ignored. Method-call syntax such as `value.helper()` is counted. A body is considered trivial only when it contains at most six HIR expression nodes and no control flow, closures or async/coroutine constructs, unsafe blocks, inline assembly, yield/await, or early exits.

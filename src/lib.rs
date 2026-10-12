@@ -15,6 +15,7 @@ mod explicit_restricted_visibility;
 mod no_numeric_field_access;
 mod no_self_field_access;
 mod private_single_call_fn;
+mod self_pattern_rest;
 mod source_comments;
 mod statement_group_spacing;
 mod struct_invariant_note;
@@ -27,6 +28,7 @@ use no_self_field_access::{NO_SELF_FIELD_ACCESS, NoSelfFieldAccess};
 use private_single_call_fn::{PRIVATE_SINGLE_CALL_FN, PrivateSingleCallFn};
 use rustc_lint::LintStore;
 use rustc_session::Session;
+use self_pattern_rest::{SELF_PATTERN_REST, SelfPatternRest};
 use statement_group_spacing::{STATEMENT_GROUP_SPACING, StatementGroupSpacing};
 use struct_invariant_note::{STRUCT_INVARIANT_NOTE, StructInvariantNote};
 
@@ -40,6 +42,7 @@ pub fn register_lints(_session: &Session, lint_store: &mut LintStore) {
         NO_NUMERIC_FIELD_ACCESS,
         NO_SELF_FIELD_ACCESS,
         PRIVATE_SINGLE_CALL_FN,
+        SELF_PATTERN_REST,
         STATEMENT_GROUP_SPACING,
         STRUCT_INVARIANT_NOTE,
     ]);
@@ -47,6 +50,7 @@ pub fn register_lints(_session: &Session, lint_store: &mut LintStore) {
     lint_store.register_early_pass(|| Box::new(StructInvariantNote::default()));
     lint_store.register_late_pass(|_| Box::new(NoNumericFieldAccess));
     lint_store.register_late_pass(|_| Box::new(NoSelfFieldAccess));
+    lint_store.register_late_pass(|_| Box::new(SelfPatternRest));
     lint_store.register_late_pass(|_| Box::new(PrivateSingleCallFn::default()));
     lint_store.register_late_pass(|_| Box::new(StatementGroupSpacing));
 }

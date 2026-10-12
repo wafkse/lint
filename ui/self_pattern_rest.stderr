@@ -1,0 +1,67 @@
+error: replace consecutive edge `_` patterns with `..`
+  --> $DIR/self_pattern_rest.rs:25:18
+   |
+LL |         let Self(_, _, a, b, c) = self;
+   |                  ^^^^
+   |
+   = help: use `..` for this run and retain the other field patterns
+   = note: `#[deny(self_pattern_rest)]` on by default
+
+error: replace consecutive edge `_` patterns with `..`
+  --> $DIR/self_pattern_rest.rs:30:27
+   |
+LL |         let Self(a, b, c, _, _) = self;
+   |                           ^^^^
+   |
+   = help: use `..` for this run and retain the other field patterns
+
+error: replace consecutive edge `_` patterns with `..`
+  --> $DIR/self_pattern_rest.rs:35:18
+   |
+LL |         let Self(_, _, _, _, _) = self;
+   |                  ^^^^^^^^^^^^^
+   |
+   = help: use `..` for this run and retain the other field patterns
+
+error: replace consecutive edge `_` patterns with `..`
+  --> $DIR/self_pattern_rest.rs:39:18
+   |
+LL |         let Self(_, _, middle, _, _) = self;
+   |                  ^^^^
+   |
+   = help: use `..` for this run and retain the other field patterns
+
+error: replace consecutive edge `_` patterns with `..`
+  --> $DIR/self_pattern_rest.rs:44:19
+   |
+LL |         let &Self(_, _, a, b, c) = self;
+   |                   ^^^^
+   |
+   = help: use `..` for this run and retain the other field patterns
+
+error: replace consecutive edge `_` patterns with `..`
+  --> $DIR/self_pattern_rest.rs:49:32
+   |
+LL |         let &mut Self(a, b, c, _, _) = self;
+   |                                ^^^^
+   |
+   = help: use `..` for this run and retain the other field patterns
+
+error: replace consecutive edge `_` patterns with `..`
+  --> $DIR/self_pattern_rest.rs:54:18
+   |
+LL |         let Self(_, _, a, b, c) = other;
+   |                  ^^^^
+   |
+   = help: use `..` for this run and retain the other field patterns
+
+error: replace consecutive edge `_` patterns with `..`
+  --> $DIR/self_pattern_rest.rs:59:18
+   |
+LL |         let Self(_, /* preserve this comment */ _, a, b, c) = self;
+   |                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = help: use `..` for this run and retain the other field patterns
+
+error: aborting due to 8 previous errors
+
